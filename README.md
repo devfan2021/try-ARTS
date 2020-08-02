@@ -22,4 +22,4 @@ ARTS 详情：[极客时间《左耳听风》发起的ARTS挑战怎么参加？ 
 
 ## 2020
 
-**7月**：[第 1 期](weekly/2020/arts-0001.md)、 [第 2 期](weekly/2020/arts-0002.md)、[第 3 期](weekly/2020/arts-0003.md) :high_brightness:
+**7月**：[第 1 期](weekly/2020/arts-0001.md)、 [第 2 期](weekly/2020/arts-0002.md)、[第 3 期](weekly/2020/arts-0003.md) 、[第 4 期](weekly/2020/arts-0004.md):high_brightness:
