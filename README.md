@@ -18,5 +18,5 @@
 
 ARTS 详情：[极客时间《左耳听风》发起的 ARTS 挑战怎么参加？ - 陈皓的回答 - 知乎](https://www.zhihu.com/question/301150832/answer/529809529)
 
-**8 月**：[第 5 期](weekly/2020/arts-0005.md)、 [第 6 期](weekly/2020/arts-0006.md):high_brightness:  
+**8 月**：[第 5 期](weekly/2020/arts-0005.md)、 [第 6 期](weekly/2020/arts-0006.md)、[第 7 期](weekly/2020/arts-0007.md):high_brightness:   
 **7 月**：[第 1 期](weekly/2020/arts-0001.md)、 [第 2 期](weekly/2020/arts-0002.md)、[第 3 期](weekly/2020/arts-0003.md) 、[第 4 期](weekly/2020/arts-0004.md)
