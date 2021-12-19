@@ -1,4 +1,4 @@
-### ARTS 的初衷1
+### ARTS 的初衷
 
 **Algorithm**: 主要是为了编程训练和学习。每周至少做一个 leetcode 的算法题（先从 Easy 开始，然后再 Medium，最后才 Hard）。进行编程训练，如果不训练你看再多的算法书，你依然不会做算法题，看完书后，你需要训练。
 
@@ -18,7 +18,11 @@
 
 ARTS 详情：[极客时间《左耳听风》发起的 ARTS 挑战怎么参加？ - 陈皓的回答 - 知乎](https://www.zhihu.com/question/301150832/answer/529809529)
 
-**10 月**：[第 12 期](weekly/2020/arts-0012.md):high_brightness:  
+### 2021启航
+**12 月**：[第 13 期](weekly/2021/arts-0013.md):high_brightness:  
+
+### 2020归档
+**10 月**：[第 12 期](weekly/2020/arts-0012.md)
 **9 月**：[第 9 期](weekly/2020/arts-0009.md)、[第 10 期](weekly/2020/arts-0010.md)、[第 11 期](weekly/2020/arts-0011.md)  
 **8 月**：[第 5 期](weekly/2020/arts-0005.md)、[第 6 期](weekly/2020/arts-0006.md)、[第 7 期](weekly/2020/arts-0007.md)、[第 8 期](weekly/2020/arts-0008.md)  
 **7 月**：[第 1 期](weekly/2020/arts-0001.md)、[第 2 期](weekly/2020/arts-0002.md)、[第 3 期](weekly/2020/arts-0003.md)、[第 4 期](weekly/2020/arts-0004.md)
