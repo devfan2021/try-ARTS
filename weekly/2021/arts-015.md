@@ -1,7 +1,7 @@
 目录导航
 [TOC]
 
-## 1.Algorithm
+## 1.Algorithm - Kadane's algorithm
 [1749]&nbsp;&nbsp;[Maximum Absolute Sum of Any Subarray](https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray/)
 
 **Medium** &nbsp;&nbsp; **array** &nbsp;&nbsp; **Dynamic Programming**
