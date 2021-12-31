@@ -2,92 +2,103 @@
 [TOC]
 
 ## 1.Algorithm
-[908]&nbsp;&nbsp;[Smallest Range I](https://leetcode.com/problems/smallest-range-i/)
+[1749]&nbsp;&nbsp;[Maximum Absolute Sum of Any Subarray](https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray/)
 
-**Easy** &nbsp;&nbsp; **array** &nbsp;&nbsp; **math**
+**Medium** &nbsp;&nbsp; **array** &nbsp;&nbsp; **Dynamic Programming**
+
+You are given an integer array nums. The absolute sum of a subarray [numsl, numsl+1, ..., numsr-1, numsr] is abs(numsl + numsl+1 + ... + numsr-1 + numsr).
+
+Return the maximum absolute sum of any (possibly empty) subarray of nums.
+
+Note that abs(x) is defined as follows:
+
+If x is a negative integer, then abs(x) = -x.
+If x is a non-negative integer, then abs(x) = x.
 
 Example1:
 
 ```c
-Input: nums = [1], k = 0
-Output: 0
-Explanation: The score is max(nums) - min(nums) = 1 - 1 = 0.
+Input: nums = [1,-3,2,3,-4]
+Output: 5
+Explanation: The subarray [2,3] has absolute sum = abs(2+3) = abs(5) = 5.
 ```
 
 Example2:
 
 ```c
-Input: nums = [0,10], k = 2
-Output: 6
-Explanation: Change nums to be [2, 8]. The score is max(nums) - min(nums) = 8 - 2 = 6.
-```
-
-Example3:
-
-```c
-Input: nums = [1,3,6], k = 3
-Output: 0
-Explanation: Change nums to be [4, 4, 4]. The score is max(nums) - min(nums) = 4 - 4 = 0.
+Input: nums = [2,-5,1,-4,3,-2]
+Output: 8
+Explanation: The subarray [-5,1,-4] has absolute sum = abs(-5+1-4) = abs(-8) = 8.
 ```
 
 Constraints:
 ```
-1 <= nums.length <= 104
-0 <= nums[i] <= 104
-0 <= k <= 104
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
 ```
 
 **解答**
-采用最简单的解法，寻找数组中最大值和最小值。
-这个题目本身不难，刚开始读题的时候，感觉有点困惑，但是细想下来，解题思路还是挺简单的。leetcode官网也有很多人吐槽该题目，读题15分钟，解题2-3分钟。[Very confusing question!](https://leetcode.com/problems/smallest-range-i/discuss/178344/Very-confusing-question!)
-##### (1).常规解法, 1 层循环，时间复杂度 O(n)
+最大连续子序列，非常经典的问题，是[53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)变形题目，主要采用暴力破解和基于Kadane's algorithm的解法
+wikipedia上关于该类型提的说明：[Maximum subarray problem](https://en.wikipedia.org/wiki/Maximum_subarray_problem)
+##### (1).基于Kadane's algorithm, 1 层循环，时间复杂度 O(n)
+
+但是算法的执行时间不一定比第一种高，因为在for循环中多了很多次的abs方法执行
 
 ```
-func smallestRangeI(nums []int, k int) int {
-  if len(nums) == 0 {
-    return 0
-  }
+func solution1(nums []int) int {
+	bestMaxSum, curMaxSum := 0, 0
+	for _, val := range nums {
+		curMaxSum = maxVal(curMaxSum+val, val)
+		bestMaxSum = maxVal(bestMaxSum, curMaxSum)
+	}
 
-  minVal, maxVal := nums[0], nums[0]
+	bestMinSum, curMinSum := 0, 0
+	for _, val := range nums {
+		curMinSum = minVal(curMinSum+val, val)
+		bestMinSum = minVal(bestMinSum, curMinSum)
+	}
 
-  for _, val := range nums {
-    if val < minVal {
-      minVal = val
-    }
-    if val > maxVal {
-      maxVal = val
-    }
-  }
+	if bestMinSum < 0 {
+		if abs(bestMinSum) > bestMaxSum {
+			return abs(bestMinSum)
+		}
+	}
+	return bestMaxSum
+}
 
-  val := maxVal - minVal - 2 * k
-  if val < 0 {
-    return 0
-  }
-  return val
+func abs(val int) int {
+	if val < 0 {
+		return -val
+	}
+	return val
+}
+
+func maxVal(val1, val2 int) int {
+	if val1 > val2 {
+		return val1
+	}
+	return val2
+}
+
+func minVal(val1, val2 int) int {
+	if val1 < val2 {
+		return val1
+	}
+	return val2
 }
 ```
 
-##### (2).类似方法1，网上最优的Go解法，与解法1类似
+##### (2).优化的方法，将查找最大值和最小值合并到一次for循环中
 
 ```
-func smallestRangeI(nums[] int, k int) int {
-  min, max := nums[0], nums[0]
-  for _, x := range nums {
-    if x < min {
-      min = x
-    }
-    if x > max {
-      max = x
-    }
-  }
-
-  min += k
-  max -= k
-  score := max - min
-  if score < 0 {
-    return 0
-  }
-  return score
+func solution2(nums []int) int {
+	result, curMaxSum, curMinSum := 0, 0, 0
+	for _, val := range nums {
+		curMaxSum = maxVal(curMaxSum+val, val)
+		curMinSum = minVal(curMinSum+val, val)
+		result = maxVal(result, maxVal(abs(curMaxSum), abs(curMinSum)))
+	}
+	return result
 }
 ```
 
