@@ -113,10 +113,10 @@ Rust 是写前端基建，是当下趋势；Rust 语言在前端工具链的影�
 * mvn install:install-file -Dfile=/path/XXX-1.0.0.jar -DgroupId=com.XX -DartifactId=XXX -Dversion=1.0.0 -Dpackaging=jar
 * mvn install:install-file -Dfile=/path/XXX-1.0.0-source.jar -DgroupId=com.XX -DartifactId=XXX -Dversion=1.0.0 -source -Dpackaging=jar
 
-[Strings, bytes, runes and characters in Go](https://go.dev/blog/strings)
-[byte and rune](https://www.bogotobogo.com/GoLang/GoLang_byte_and_rune.php)
-[What is a rune?](https://stackoverflow.com/questions/19310700/what-is-a-rune)
-[mvn install本地安装jar到指定仓库](https://www.cnblogs.com/littleorange7/p/14741827.html)
+* [Strings, bytes, runes and characters in Go](https://go.dev/blog/strings)
+* [byte and rune](https://www.bogotobogo.com/GoLang/GoLang_byte_and_rune.php)
+* [What is a rune?](https://stackoverflow.com/questions/19310700/what-is-a-rune)
+* [mvn install本地安装jar到指定仓库](https://www.cnblogs.com/littleorange7/p/14741827.html)
 
 ## 4.Share - D2C(Design To Code)
 前端从最初的脚手架工具、组件库、持续集成体系、自动化测试、多端适配到现在的全面低代码平台、前端智能化、在线IDE，大前端一直朝着提高生产力，提高研发效能的方向演进。
