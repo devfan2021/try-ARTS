@@ -1,4 +1,4 @@
-## 1.Algorithm - Two Pointers
+## 1.Algorithm - Vowels, Two Pointers
 
 [1]&nbsp;&nbsp;[Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/)
 
@@ -24,16 +24,77 @@ Output: "leotcede"
 
 **解答**
 
-##### (1).常规解法, 2 层循环，时间复杂度 O(n\*n)
+##### (1).常规解法, 双指针遍历，时间复杂度 O(n)
+注意byte与string的互相转换
 
 ```
+func reverseVowels(s string) string {
+	if len(s) <= 1 {
+		return s
+	}
 
+	b := []byte(s)
+	begin, end := 0, len(b)-1
+	for begin < end {
+		if !isVowel(b[begin]) {
+			begin++
+			continue
+		}
+
+		if !isVowel(b[end]) {
+			end--
+			continue
+		}
+		b[begin], b[end] = b[end], b[begin]
+		begin++
+		end--
+	}
+
+	return string(b)
+}
+
+func isVowel(c byte) bool {
+	if c < 'a' {
+		c += 32
+	}
+	return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+}
 ```
 
-##### (2).基于 Hash，算术运算, 改成 1 层循环，时间复杂度 O(n)， 用空间换时间的思路
+##### (2).方法类似1, 双指针遍历，构造map进行遍历比较，时间复杂度 O(n)
+注意byte与string, byte与rune之间的互相转换
 
 ```
+func reverseVowels(s string) string {
+	if len(s) <= 1 {
+		return s
+	}
 
+	vowels := "aeiouAEIOU"
+	vowelMap := make(map[byte]bool)
+	for _, val := range vowels {
+		vowelMap[byte(val)] = true
+	}
+
+	b := []byte(s)
+	begin, end := 0, len(s)-1
+	for begin < end {
+		if !vowelMap[b[begin]] {
+			begin++
+			continue
+		}
+
+		if !vowelMap[b[end]] {
+			end--
+			continue
+		}
+
+		b[begin], b[end] = b[end], b[begin]
+		begin++
+		end--
+	}
+	return string(b)
+}
 ```
 
 ## 2.Review - It's Rust all the way down
@@ -42,7 +103,20 @@ Rust 是写前端基建，是当下趋势；Rust 语言在前端工具链的影�
 * [Hacker News: Rust Is the Future of JavaScript Infrastructure (leerob.io)](https://news.ycombinator.com/item?id=29192088)
 * [rust-fe](https://github.com/i5ting/rust-fe)
 
-## 3.Tip
+## 3.Tip - byte and rune(golang)
+### 3.1 byte and rune
+* Golang has integer types called byte and rune that are aliases for uint8 and int32 data types
+* The byte data type represents ASCII characters while the rune data type represents a more broader set of Unicode characters that are encoded in UTF-8 format.
+* The default type for character values is rune
+
+### 3.2 deploy local jar to local maven repository
+* mvn install:install-file -Dfile=/path/XXX-1.0.0.jar -DgroupId=com.XX -DartifactId=XXX -Dversion=1.0.0 -Dpackaging=jar
+* mvn install:install-file -Dfile=/path/XXX-1.0.0-source.jar -DgroupId=com.XX -DartifactId=XXX -Dversion=1.0.0 -source -Dpackaging=jar
+
+[Strings, bytes, runes and characters in Go](https://go.dev/blog/strings)
+[byte and rune](https://www.bogotobogo.com/GoLang/GoLang_byte_and_rune.php)
+[What is a rune?](https://stackoverflow.com/questions/19310700/what-is-a-rune)
+[mvn install本地安装jar到指定仓库](https://www.cnblogs.com/littleorange7/p/14741827.html)
 
 ## 4.Share - D2C(Design To Code)
 前端从最初的脚手架工具、组件库、持续集成体系、自动化测试、多端适配到现在的全面低代码平台、前端智能化、在线IDE，大前端一直朝着提高生产力，提高研发效能的方向演进。
