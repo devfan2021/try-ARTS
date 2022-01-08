@@ -1,6 +1,6 @@
 ## 1.Algorithm - Vowels, Two Pointers
 
-[1]&nbsp;&nbsp;[Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/)
+[345]&nbsp;&nbsp;[Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/)
 
 **Easy** &nbsp;&nbsp; **Two Pointers** &nbsp;&nbsp; **String**
 
