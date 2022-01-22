@@ -19,7 +19,7 @@
 ARTS 详情：[极客时间《左耳听风》发起的 ARTS 挑战怎么参加？ - 陈皓的回答 - 知乎](https://www.zhihu.com/question/301150832/answer/529809529)
 
 ### 2022新征程
-**1 月**：[第 16 期](weekly/2022/arts-016.md)、[第 17 期](weekly/2022/arts-017.md):high_brightness:
+**1 月**：[第 16 期](weekly/2022/arts-016.md)、[第 17 期](weekly/2022/arts-017.md)、[第 18 期](weekly/2022/arts-018.md):high_brightness:
 
 ### 2021归档
 **12 月**：[第 13 期](weekly/2021/arts-0013.md)、[第 14 期](weekly/2021/arts-014.md)、[第 15 期](weekly/2021/arts-015.md)
