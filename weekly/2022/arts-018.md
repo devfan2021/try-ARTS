@@ -30,18 +30,36 @@ s and goal consist of lowercase English letters.
 ```
 
 **解答**
-本题可以采用常规的方法和基于 hashtab 的方式进行处理(题目描述中已经定义不存在重复的数据)
 
-##### (1).常规解法, 2 层循环，时间复杂度 O(n\*n)
+采用字符串比较的方式，比如将字符进行合并后进行对比
 
+##### (1).采用将原字符进行合并，再采用内置的Contains方法进行比较
+
+```golang
+func rotateString(s string, goal string) bool {
+	return len(s) == len(goal) && strings.Contains(s+s, goal)
+}
 ```
 
-```
+##### (2).对方法1进行改进，遍历进行比较
 
-##### (2).基于 Hash，算术运算, 改成 1 层循环，时间复杂度 O(n)， 用空间换时间的思路
+```golang
+func rotateString(s string, goal string) bool {
+	if len(s) != len(goal) {
+		return false
+	}
 
-```
+	if s == goal {
+		return true
+	}
 
+	for i := 0; i <= len(s); i++ {
+		if strings.Compare(s[i:]+s[:i], goal) == 0 {
+			return true
+		}
+	}
+	return false
+}
 ```
 
 ## 2.Review
