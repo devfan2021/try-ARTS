@@ -1,35 +1,83 @@
 ## 1.Algorithm
 
-[1]&nbsp;&nbsp;[Two Sum](https://leetcode.com/problems/two-sum/description/)
+[717]&nbsp;&nbsp;[1-bit and 2-bit Characters](https://leetcode.com/problems/1-bit-and-2-bit-characters/)
 
-**Easy** &nbsp;&nbsp; **array** &nbsp;&nbsp; **hash-table**
+**Easy** &nbsp;&nbsp; **array** &nbsp;&nbsp;
 
-Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+We have two special characters:
 
-You may assume that each input would have exactly one solution, and you may not use the same element twice.
+The first character can be represented by one bit 0.
+The second character can be represented by two bits (10 or 11).
+Given a binary array bits that ends with 0, return true if the last character must be a one-bit character.
 
-Example:
+Example 1:
 
 ```
-Given nums = [2, 7, 11, 15], target = 9,
+Input: bits = [1,0,0]
+Output: true
+Explanation: The only way to decode it is two-bit character and one-bit character.
+So the last character is one-bit character.
+```
 
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
+Example 2:
+
+```
+Input: bits = [1,1,1,0]
+Output: false
+Explanation: The only way to decode it is two-bit character and two-bit character.
+So the last character is not one-bit character.
+```
+
+Constraints:
+
+```
+1 <= bits.length <= 1000
+bits[i] is either 0 or 1.
 ```
 
 **解答**
-本题可以采用常规的方法和基于 hashtab 的方式进行处理(题目描述中已经定义不存在重复的数据)
+本题可以采用常规的遍历方式，主要是对题意的理解，默认只会有10，11，0这三种形式出现
 
-##### (1).常规解法, 2 层循环，时间复杂度 O(n\*n)
+##### (1).常规解法, 1 层循环，时间复杂度 O(n)
 
+```golang
+func isOneBitCharacter(bits []int) bool {
+ if len(bits) == 0 {
+  return false
+ }
+ index := 0
+ for index < len(bits) {
+  if bits[index] == 1 {
+   index += 2
+   continue
+  }
+  if bits[index] == 0 {
+   if index == len(bits)-1 {
+    return true
+   }
+   index += 1
+   continue
+  }
+ }
+ return false
+}
 ```
 
-```
+##### (2).对第一种方式的简化写法，算法复杂度与（1）类似，巧妙判断最后一个位（题意最后一位永远是0）
 
-##### (2).基于 Hash，算术运算, 改成 1 层循环，时间复杂度 O(n)， 用空间换时间的思路
-
-```
-
+```golang
+func isOneBitCharacter(bits []int) bool {
+ l := len(bits)
+ for index := 0; index < l; index++ {
+  if index == l-1 {
+   return true
+  }
+  if bits[index] == 1 {
+   index += 1
+  }
+ }
+ return false
+}
 ```
 
 ## 2.Review
@@ -40,4 +88,14 @@ return [0, 1].
 
 ## 3.Tip
 
+* 最小Demo体验与完善的清理机制
+最近在看TiDB的相关资料，再结合之前的SkyWalking的show case，[Quick Start Guide for the TiDB Database Platform](https://docs.pingcap.com/tidb/stable/quick-start-with-tidb)和[SkyWalking showcase](https://skywalking.apache.org/docs/skywalking-showcase/latest/readme/)；由此想到一个官方的起步教程已经非常简练完善，再结合官方提供的相关工具，就可以快速搭建起一个包括数据与UI界面的体验环境，极大了降低了学习者的初次使用的学习成本，同时也非常友好的向学习者展示了项目的功能，非常容易引入学习者去尝试使用项目。
+
 ## 4.Share
+
+* [传统行业数据架构发展变化](https://asktug.com/t/topic/513467)
+文章梳理了数据架构演进的几个阶段，非常值得参考借鉴
+  * 单一数据库集群
+  * TP和AP分离
+  * 大数据的引入
+  * HTAP+云原生
