@@ -1,40 +1,73 @@
 ## 1.Algorithm
 
-[1]&nbsp;&nbsp;[Two Sum](https://leetcode.com/problems/two-sum/description/)
+[1446]&nbsp;&nbsp;[Consecutive Characters](https://leetcode.com/problems/consecutive-characters/description/)
 
-**Easy** &nbsp;&nbsp; **array** &nbsp;&nbsp; **hash-table**
+**Easy** &nbsp;&nbsp; **string** &nbsp;&nbsp;
 
-Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+The power of the string is the maximum length of a non-empty substring that contains only one unique character.
 
-You may assume that each input would have exactly one solution, and you may not use the same element twice.
+Given a string s, return the power of s.
 
-Example:
+Example 1:
 
 ```
-Given nums = [2, 7, 11, 15], target = 9,
+Input: s = "leetcode"
+Output: 2
+Explanation: The substring "ee" is of length 2 with the character 'e' only.
+```
 
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
+Example 2:
+
+```
+Input: s = "abbcccddddeeeeedcba"
+Output: 5
+Explanation: The substring "eeeee" is of length 5 with the character 'e' only.
+```
+
+Constraints:
+
+```
+1 <= s.length <= 500
+s consists of only lowercase English letters.
 ```
 
 **解答**
-本题可以采用常规的方法和基于 hashtab 的方式进行处理(题目描述中已经定义不存在重复的数据)
+本题直接采用常规的字符串变量方式，进行计数大小比较
 
-##### (1).常规解法, 2 层循环，时间复杂度 O(n\*n)
+##### (1).常规解法, 1层循环，时间复杂度 O(n)
 
-```
-
-```
-
-##### (2).基于 Hash，算术运算, 改成 1 层循环，时间复杂度 O(n)， 用空间换时间的思路
-
-```
-
+```golang
+func maxPower(s string) int {
+    max, cMax, cFirst := 0, 0, rune(s[0])
+    for _, v := range s {
+        if cFirst == v {
+            cMax += 1
+        } else {
+            if cMax > max {
+                max = cMax
+            }
+            cFirst = v
+            cMax = 1
+        }
+    }
+    if cMax > max {
+        return cMax
+    }
+    return max
+}
 ```
 
 ## 2.Review
-* [Track: Kubernetes and Cloud Architectures](https://qconlondon.com/london2020/track/kubernetes-and-cloud-architectures)
+
+* [Microservices vs. SOA](https://dzone.com/articles/microservices-vs-soa-2)
+* [Microservices vs. SOA – Is There Any Difference at All?](https://dzone.com/articles/microservices-vs-soa-is-there-any-difference-at-al)
+* [Microservices, SOA, and APIs: Friends or enemies?](https://developer.ibm.com/tutorials/1601_clark-trs/)
 
 ## 3.Tip
 
+no tips in this week
+
 ## 4.Share
+
+* [COLA 4.0：应用架构的最佳实践](https://blog.csdn.net/significantfrank/article/details/110934799)
+* [Clean Code之封装：把野兽关进笼子](https://blog.csdn.net/significantfrank/article/details/122738602)
